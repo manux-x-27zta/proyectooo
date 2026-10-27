@@ -37,6 +37,7 @@ import {
 import { Species, ColombianRegion } from '../types';
 import { COLOMBIAN_SPECIES } from '../data/speciesData';
 import { hasValidCoordinates } from '../data/colombiaGeoData';
+import { OpenFreeColombiaMap } from './OpenFreeColombiaMap';
 
 export type ColombiaMapMode = 'hybrid' | 'satellite' | 'roadmap';
 
@@ -46,7 +47,12 @@ interface InteractiveMapProps {
   isDarkMode: boolean;
 }
 
-const GOOGLE_MAPS_API_KEY: string = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
+const GOOGLE_MAPS_API_KEY: string = (import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '').trim();
+const HAS_VALID_GOOGLE_MAPS_KEY: boolean = Boolean(
+  GOOGLE_MAPS_API_KEY.length > 10 &&
+    GOOGLE_MAPS_API_KEY !== 'YOUR_API_KEY' &&
+    GOOGLE_MAPS_API_KEY !== 'MY_GOOGLE_MAPS_API_KEY'
+);
 const COLOMBIA_MAP_ID = 'bioexplora-colombia-map';
 const COLOMBIA_DEFAULT_CENTER: google.maps.LatLngLiteral = { lat: 4.85, lng: -74.45 };
 const COLOMBIA_DEFAULT_ZOOM = 5.4;
@@ -519,6 +525,16 @@ const ColombiaGoogleAtlasInner: React.FC<InteractiveMapProps> = ({
   const mapLoadFailed =
     apiStatus === APILoadingStatus.FAILED || apiStatus === APILoadingStatus.AUTH_FAILURE;
 
+  if (mapLoadFailed) {
+    return (
+      <OpenFreeColombiaMap
+        selectedSpeciesFromNav={selectedSpeciesFromNav}
+        onOpenSpeciesDetails={onOpenSpeciesDetails}
+        isDarkMode={isDarkMode}
+      />
+    );
+  }
+
   return (
     <div className="space-y-5 pb-12">
       {/* ================================================================== */}
@@ -961,13 +977,13 @@ const ColombiaGoogleAtlasInner: React.FC<InteractiveMapProps> = ({
               <div className="flex flex-wrap items-center gap-1.5">
                 {(
                   [
-                    { id: 'Caribe', color: '#eab308', label: 'Caribe' },
-                    { id: 'Pacífica', color: '#059669', label: 'Pacífica' },
-                    { id: 'Andina', color: '#65a30d', label: 'Andina' },
-                    { id: 'Orinoquía', color: '#d97706', label: 'Orinoquía' },
-                    { id: 'Amazonía', color: '#15803d', label: 'Amazonía' },
-                    { id: 'Insular', color: '#0284c7', label: 'Insular' },
-                  ] as Array<{ id: ColombianRegion; color: string; label: string }>
+                    { id: 'Caribe', dotCls: 'bg-yellow-500', label: 'Caribe' },
+                    { id: 'Pacífica', dotCls: 'bg-emerald-600', label: 'Pacífica' },
+                    { id: 'Andina', dotCls: 'bg-lime-600', label: 'Andina' },
+                    { id: 'Orinoquía', dotCls: 'bg-amber-600', label: 'Orinoquía' },
+                    { id: 'Amazonía', dotCls: 'bg-green-700', label: 'Amazonía' },
+                    { id: 'Insular', dotCls: 'bg-sky-600', label: 'Insular' },
+                  ] as Array<{ id: ColombianRegion; dotCls: string; label: string }>
                 ).map((reg) => {
                   const isActive = selectedRegion === reg.id;
                   return (
@@ -984,8 +1000,7 @@ const ColombiaGoogleAtlasInner: React.FC<InteractiveMapProps> = ({
                       }`}
                     >
                       <span
-                        className="w-2.5 h-2.5 rounded-full shrink-0 border border-black/15"
-                        style={{ backgroundColor: reg.color }}
+                        className={`w-2.5 h-2.5 rounded-full shrink-0 border border-black/15 ${reg.dotCls}`}
                       />
                       <span>{reg.label}</span>
                     </button>
@@ -1376,6 +1391,10 @@ const ColombiaGoogleAtlasInner: React.FC<InteractiveMapProps> = ({
 // ============================================================================
 
 export const InteractiveMap: React.FC<InteractiveMapProps> = (props) => {
+  if (!HAS_VALID_GOOGLE_MAPS_KEY) {
+    return <OpenFreeColombiaMap {...props} />;
+  }
+
   return (
     <APIProvider
       apiKey={GOOGLE_MAPS_API_KEY}
