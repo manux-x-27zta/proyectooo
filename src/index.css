@@ -1,0 +1,417 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *, [data-theme-mode="dark"], [data-theme-mode="dark"] *));
+
+/* ============================================================
+   PALETAS DE COLOR DINÁMICAS - BIOEXPLORA COLOMBIA
+   ============================================================ */
+
+:root,
+[data-theme-mode="light"] {
+  color-scheme: light;
+  /* Default: Selva Esmeralda (Light Mode - High Contrast Mobile & Daylight) */
+  --theme-primary: #196b44;
+  --theme-primary-hover: #145a38;
+  --theme-primary-active: #0f462a;
+  --theme-accent: #10b981;
+  --theme-accent-glow: #34d399;
+  --theme-accent-light: #ecfdf5;
+  --theme-accent-text: #065f46;
+  --theme-bg-page: #fafcfb;
+  --theme-bg-card: #ffffff;
+  --theme-bg-card-hover: #f4faf6;
+  --theme-border: #cfe3d8;
+  --theme-border-subtle: #e6f2eb;
+  --theme-text-title: #0f2e1e;
+  --theme-text-body: #14241b;
+  --theme-text-muted: #3d574a;
+  --theme-badge-bg: #e2f4ea;
+  --theme-badge-text: #14532d;
+  --theme-header-bg: rgba(255, 255, 255, 0.96);
+  --theme-header-border: #dceae1;
+  --theme-btn-gradient: linear-gradient(135deg, #10b981 0%, #196b44 100%);
+  --theme-hero-gradient: linear-gradient(to right, #34d399, #5eead4, #bef264);
+  --theme-selection-bg: #10b981;
+}
+
+/* Modo Oscuro Global */
+[data-theme-mode="dark"],
+html.dark {
+  color-scheme: dark;
+  --theme-bg-page: #0a1410;
+  --theme-bg-card: #112019;
+  --theme-bg-card-hover: #172d23;
+  --theme-border: #224434;
+  --theme-border-subtle: #193327;
+  --theme-text-title: #ffffff;
+  --theme-text-body: #e4f1ea;
+  --theme-text-muted: #9cb8aa;
+  --theme-badge-bg: #152d22;
+  --theme-badge-text: #86e2b5;
+  --theme-header-bg: rgba(13, 26, 20, 0.96);
+  --theme-header-border: #1d382b;
+}
+
+/* 1. Océano Gorgona */
+[data-palette="oceano"] {
+  --theme-primary: #1d4ed8;
+  --theme-primary-hover: #1e40af;
+  --theme-primary-active: #172554;
+  --theme-accent: #0284c7;
+  --theme-accent-glow: #38bdf8;
+  --theme-accent-light: #eff6ff;
+  --theme-accent-text: #1e3a8a;
+  --theme-bg-page: #f4f8fd;
+  --theme-bg-card: #ffffff;
+  --theme-bg-card-hover: #eef5fc;
+  --theme-border: #bfdbfe;
+  --theme-border-subtle: #dbeafe;
+  --theme-text-title: #0b2244;
+  --theme-text-body: #0f172a;
+  --theme-text-muted: #334155;
+  --theme-badge-bg: #dbeafe;
+  --theme-badge-text: #1e40af;
+  --theme-header-bg: rgba(255, 255, 255, 0.96);
+  --theme-header-border: #dbeafe;
+  --theme-btn-gradient: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+  --theme-hero-gradient: linear-gradient(to right, #60a5fa, #38bdf8, #7dd3fc);
+  --theme-selection-bg: #0284c7;
+}
+[data-palette="oceano"][data-theme-mode="dark"] {
+  --theme-bg-page: #050d1a;
+  --theme-bg-card: #0b192e;
+  --theme-bg-card-hover: #122543;
+  --theme-border: #1d3b66;
+  --theme-border-subtle: #142a47;
+  --theme-text-title: #ffffff;
+  --theme-text-body: #e2e8f0;
+  --theme-text-muted: #94a3b8;
+  --theme-badge-bg: #0f274a;
+  --theme-badge-text: #93c5fd;
+  --theme-header-bg: rgba(8, 20, 36, 0.96);
+  --theme-header-border: #1a365d;
+}
+
+/* 2. Sol del Páramo */
+[data-palette="paramo"] {
+  --theme-primary: #b45309;
+  --theme-primary-hover: #92400e;
+  --theme-primary-active: #78350f;
+  --theme-accent: #f59e0b;
+  --theme-accent-glow: #fbbf24;
+  --theme-accent-light: #fffbeb;
+  --theme-accent-text: #78350f;
+  --theme-bg-page: #fdfbf6;
+  --theme-bg-card: #ffffff;
+  --theme-bg-card-hover: #faf5ea;
+  --theme-border: #fde68a;
+  --theme-border-subtle: #fef3c7;
+  --theme-text-title: #3b1502;
+  --theme-text-body: #1c1917;
+  --theme-text-muted: #57534e;
+  --theme-badge-bg: #fef3c7;
+  --theme-badge-text: #92400e;
+  --theme-header-bg: rgba(255, 255, 255, 0.96);
+  --theme-header-border: #fef3c7;
+  --theme-btn-gradient: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  --theme-hero-gradient: linear-gradient(to right, #fbbf24, #fde047, #f97316);
+  --theme-selection-bg: #f59e0b;
+}
+[data-palette="paramo"][data-theme-mode="dark"] {
+  --theme-bg-page: #140d04;
+  --theme-bg-card: #241807;
+  --theme-bg-card-hover: #36240b;
+  --theme-border: #4d330f;
+  --theme-border-subtle: #332107;
+  --theme-text-title: #ffffff;
+  --theme-text-body: #f5f5f4;
+  --theme-text-muted: #d6d3d1;
+  --theme-badge-bg: #38240a;
+  --theme-badge-text: #fcd34d;
+  --theme-header-bg: rgba(26, 17, 6, 0.96);
+  --theme-header-border: #422c0d;
+}
+
+/* 3. Orquídea Real */
+[data-palette="orquidea"] {
+  --theme-primary: #7e22ce;
+  --theme-primary-hover: #6b21a8;
+  --theme-primary-active: #581c87;
+  --theme-accent: #d946ef;
+  --theme-accent-glow: #f472b6;
+  --theme-accent-light: #faf5ff;
+  --theme-accent-text: #581c87;
+  --theme-bg-page: #faf5ff;
+  --theme-bg-card: #ffffff;
+  --theme-bg-card-hover: #f5ebfe;
+  --theme-border: #e9d5ff;
+  --theme-border-subtle: #f3e8ff;
+  --theme-text-title: #2e054e;
+  --theme-text-body: #24102f;
+  --theme-text-muted: #583966;
+  --theme-badge-bg: #f3e8ff;
+  --theme-badge-text: #6b21a8;
+  --theme-header-bg: rgba(255, 255, 255, 0.96);
+  --theme-header-border: #f3e8ff;
+  --theme-btn-gradient: linear-gradient(135deg, #d946ef 0%, #7e22ce 100%);
+  --theme-hero-gradient: linear-gradient(to right, #c084fc, #f472b6, #e879f9);
+  --theme-selection-bg: #a855f7;
+}
+[data-palette="orquidea"][data-theme-mode="dark"] {
+  --theme-bg-page: #100618;
+  --theme-bg-card: #1f0d2e;
+  --theme-bg-card-hover: #2e1545;
+  --theme-border: #471e69;
+  --theme-border-subtle: #33134c;
+  --theme-text-title: #ffffff;
+  --theme-text-body: #f3e8ff;
+  --theme-text-muted: #d8b4fe;
+  --theme-badge-bg: #301347;
+  --theme-badge-text: #d8b4fe;
+  --theme-header-bg: rgba(22, 9, 34, 0.96);
+  --theme-header-border: #3c1959;
+}
+
+/* 4. Caribe & Atardecer */
+[data-palette="coral"] {
+  --theme-primary: #c2410c;
+  --theme-primary-hover: #9a3412;
+  --theme-primary-active: #7c2d12;
+  --theme-accent: #f97316;
+  --theme-accent-glow: #fb923c;
+  --theme-accent-light: #fff7ed;
+  --theme-accent-text: #7c2d12;
+  --theme-bg-page: #fef7f4;
+  --theme-bg-card: #ffffff;
+  --theme-bg-card-hover: #faebe4;
+  --theme-border: #fed7aa;
+  --theme-border-subtle: #ffedd5;
+  --theme-text-title: #360f04;
+  --theme-text-body: #27150f;
+  --theme-text-muted: #613e32;
+  --theme-badge-bg: #ffedd5;
+  --theme-badge-text: #9a3412;
+  --theme-header-bg: rgba(255, 255, 255, 0.96);
+  --theme-header-border: #ffedd5;
+  --theme-btn-gradient: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+  --theme-hero-gradient: linear-gradient(to right, #fb923c, #fcd34d, #f43f5e);
+  --theme-selection-bg: #ea580c;
+}
+[data-palette="coral"][data-theme-mode="dark"] {
+  --theme-bg-page: #150804;
+  --theme-bg-card: #271007;
+  --theme-bg-card-hover: #3b180a;
+  --theme-border: #52220f;
+  --theme-border-subtle: #3a1608;
+  --theme-text-title: #ffffff;
+  --theme-text-body: #ffedd5;
+  --theme-text-muted: #fdba74;
+  --theme-badge-bg: #3d170a;
+  --theme-badge-text: #fdba74;
+  --theme-header-bg: rgba(28, 12, 6, 0.96);
+  --theme-header-border: #461d0d;
+}
+
+/* 5. Chocó Pluvial */
+[data-palette="choco"] {
+  --theme-primary: #0f766e;
+  --theme-primary-hover: #115e59;
+  --theme-primary-active: #134e4a;
+  --theme-accent: #14b8a6;
+  --theme-accent-glow: #2dd4bf;
+  --theme-accent-light: #f0fdfa;
+  --theme-accent-text: #134e4a;
+  --theme-bg-page: #f0fdfa;
+  --theme-bg-card: #ffffff;
+  --theme-bg-card-hover: #e4fbf6;
+  --theme-border: #99f6e4;
+  --theme-border-subtle: #ccfbf1;
+  --theme-text-title: #042f2e;
+  --theme-text-body: #0d2927;
+  --theme-text-muted: #2e5956;
+  --theme-badge-bg: #ccfbf1;
+  --theme-badge-text: #115e59;
+  --theme-header-bg: rgba(255, 255, 255, 0.96);
+  --theme-header-border: #ccfbf1;
+  --theme-btn-gradient: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+  --theme-hero-gradient: linear-gradient(to right, #2dd4bf, #38bdf8, #86efac);
+  --theme-selection-bg: #0d9488;
+}
+[data-palette="choco"][data-theme-mode="dark"] {
+  --theme-bg-page: #031211;
+  --theme-bg-card: #082120;
+  --theme-bg-card-hover: #0d3230;
+  --theme-border: #144946;
+  --theme-border-subtle: #0c3331;
+  --theme-text-title: #ffffff;
+  --theme-text-body: #ccfbf1;
+  --theme-text-muted: #5eead4;
+  --theme-badge-bg: #0c3331;
+  --theme-badge-text: #5eead4;
+  --theme-header-bg: rgba(6, 24, 23, 0.96);
+  --theme-header-border: #114240;
+}
+
+/* ============================================================
+   AJUSTE GLOBAL MÓVIL, CONTRASTE DE TEXTO Y CONTENCIÓN VIEWPORT
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  background-color: var(--theme-bg-page);
+  color: var(--theme-text-body);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow-x: clip;
+  background-color: var(--theme-bg-page);
+  color: var(--theme-text-body);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure native mobile dropdown options & form controls always have crisp readable contrast */
+[data-theme-mode="light"] select option,
+[data-theme-mode="light"] select optgroup {
+  background-color: #ffffff;
+  color: #14241b;
+}
+
+[data-theme-mode="dark"] select option,
+[data-theme-mode="dark"] select optgroup {
+  background-color: #0d1a14;
+  color: #f5f5f4;
+}
+
+/* Preserve Google Maps internal tile & marker image sizing */
+.gm-style img {
+  max-width: none;
+}
+
+/* Hide horizontal scrollbars on mobile navigation strips while preserving touch scroll */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent mobile browsers (iOS Safari / Chrome) from auto-zooming viewport on input focus */
+@media (max-width: 639px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Helper transition styles */
+body, #root, div, header, footer, section, button, article {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* ============================================================
+   IMPRESIÓN DE ALTA FIDELIDAD (AFICHES CON QR Y DIPLOMAS)
+   ============================================================ */
+.bioexplora-print-sheet {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: portrait;
+    margin: 7mm;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #14241b !important;
+    color-scheme: light !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* When a dedicated print portal (Afiche or Diploma) is mounted, hide #root completely
+     so ONLY the single-page poster/diploma prints without navbar, buttons, or blank pages */
+  body.has-print-sheet > #root {
+    display: none !important;
+  }
+
+  body.has-print-sheet > .bioexplora-print-sheet {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  body.has-print-sheet > .bioexplora-print-sheet ~ .bioexplora-print-sheet {
+    display: none !important;
+  }
+
+  .bioexplora-print-card {
+    width: 100% !important;
+    max-width: 176mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .bioexplora-print-diploma {
+    width: 100% !important;
+    max-width: 192mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+
+

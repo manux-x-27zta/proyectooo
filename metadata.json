@@ -1,0 +1,10 @@
+{
+  "name": "BioExplora Colombia",
+  "description": "Plataforma interactiva de biodiversidad y especies endémicas de Colombia con mapas geolocalizados, buscador taxonómico avanzado, modo offline, encuestas de impacto y generador de difusión ambiental.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
